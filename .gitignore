@@ -1,0 +1,7 @@
+/plan
+/bin
+/obj
+main — kopia.cpp
+*.cbp
+*.depend
+*.layout
