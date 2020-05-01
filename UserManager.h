@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <vector>
+#include <windows.h>
 
 using namespace std;
 
@@ -14,7 +15,8 @@ class UserManager
     vector<User> users;
 
     User provideUserDetails();
-    bool loginExists();
+    bool loginExists(string login);
+    int getNewUserId();
 
 public:
     UserManager();
