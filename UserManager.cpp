@@ -87,6 +87,50 @@ bool UserManager::loginExists(string login)
 }
 
 
+void UserManager::logInUser()
+{
+    system("cls");
+    cout<<" >>> LOG IN <<< "<<endl<<endl;
+    User user;
+    string login = "", password = "";
+
+    cout << endl << "Enter the login: ";
+    login = AuxiliaryMethods::getLine();
+
+    for(int i=0; i<users.size(); i++)
+    {
+        if (users[i].getLogin() == login)
+        {
+            for (int mistake = 3; mistake > 0; mistake--)
+            {
+                cout << "Enter the password. Mistakes left: "<< mistake << ": ";
+                password = AuxiliaryMethods::getLine();
+                if (users[i].getPassword() == password)
+                {
+                    cout << endl << "User is logged in." << endl << endl;
+                    system("pause");
+                    loggedInUserId = users[i].getId();
+                    return;
+
+                }
+            }
+            cout << "You have made mistake 3 times." << endl;
+            system("pause");
+            return;
+        }
+    }
+    cout << "There is no such login." << endl << endl;
+    system("pause");
+    return;
+}
+
+
+void UserManager::logOutUser()
+{
+    loggedInUserId = 0;
+}
+
+
 void UserManager::changeLoggedInUserPassword()
 {
     system("cls");
