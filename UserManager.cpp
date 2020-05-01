@@ -150,3 +150,12 @@ void UserManager::changeLoggedInUserPassword()
     }
     //userFile.addAllUsersToFile(users);
 }
+
+
+bool UserManager::isUserLoggedIn()
+{
+    if (loggedInUserId > 0)
+        return true;
+    else
+        return false;
+}
