@@ -2,6 +2,7 @@
 #define USERMANAGER_H
 
 #include "User.h"
+#include "AuxiliaryMethods.h"
 
 #include <iostream>
 #include <vector>

@@ -85,3 +85,24 @@ bool UserManager::loginExists(string login)
     }
     return false;
 }
+
+
+void UserManager::changeLoggedInUserPassword()
+{
+    system("cls");
+    cout<<" >>> CHANGE PASSWORD <<<"<<endl<<endl;
+    string newPassword = "";
+    cout << "Enter a new password: ";
+    newPassword = AuxiliaryMethods::getLine();
+
+    for (int i=0; i<users.size(); i++)
+    {
+        if (users[i].getId() == loggedInUserId)
+        {
+            users[i].setPassword(newPassword);
+            cout << "Password has benn changed." << endl << endl;
+            system("pause");
+        }
+    }
+    //userFile.addAllUsersToFile(users);
+}
