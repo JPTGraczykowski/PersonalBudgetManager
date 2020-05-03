@@ -6,15 +6,15 @@ User UserFile::getUserDetails(CMarkup &file)
     User user;
 
     file.IntoElem();
-    file.FindElem("userId");
+    file.FindElem("USER_ID");
     user.setId(AuxiliaryMethods::convertStringToInt(file.GetData()));
-    file.FindElem("login");
+    file.FindElem("LOGIN");
     user.setLogin(file.GetData());
-    file.FindElem("password");
+    file.FindElem("PASSWORD");
     user.setPassword(file.GetData());
-    file.FindElem("name");
+    file.FindElem("NAME");
     user.setName(file.GetData());
-    file.FindElem("surname");
+    file.FindElem("SURNAME");
     user.setSurname(file.GetData());
     file.OutOfElem();
 
@@ -29,20 +29,40 @@ vector<User> UserFile::getUsersFromFile()
     CMarkup file;
 
     bool fileExists = file.Load(getFileName().c_str());
-    file.FindElem();
-    file.IntoElem();
+    file.FindElem(); //go to USERS
+    file.IntoElem(); //go to USERS
 
     if(fileExists)
     {
-        while(file.FindElem("user"))
+        while(file.FindElem("USER"))
         {
             user = getUserDetails(file);
             users.push_back(user);
         }
     }
 
-    //delete file;
     return users;
+}
+
+
+void UserFile::addUserToFile(User user)
+{
+    CMarkup file;
+
+    bool fileExists = file.Load(getFileName().c_str());
+    file.FindElem(); //go to USERS
+    file.IntoElem(); //go to USERS
+
+    file.AddElem("USER");
+    file.IntoElem();
+
+    file.AddElem("USER_ID", user.getId());
+    file.AddElem("LOGIN", user.getLogin());
+    file.AddElem("PASSWORD", user.getPassword());
+    file.AddElem("NAME", user.getName());
+    file.AddElem("SURNAME", user.getSurname());
+
+    file.Save(getFileName().c_str());
 }
 
 

@@ -19,7 +19,7 @@ system("cls");
     User user = provideUserDetails();
 
     users.push_back(user);
-    //userFile.addUserToFile(user);
+    userFile.addUserToFile(user);
 
     cout << endl << "User is registered" << endl << endl;
     system("pause");
@@ -161,4 +161,5 @@ void UserManager::listAllUsers()
     {
         cout<<users[i].getLogin()<<endl;
     }
+    system("pause");
 }

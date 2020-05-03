@@ -8,6 +8,8 @@ int main()
 {
     UserManager userManager("users.xml");
     userManager.listAllUsers();
+    userManager.registerUser();
+    userManager.registerUser();
 
     return 0;
 }
