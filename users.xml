@@ -1,0 +1,14 @@
+<users>
+<user>
+<userId>1</userId>
+<login>jpg</login>
+<name>Jedrzej</name>
+<surname>Graczykowski</surname>
+</user>
+<user>
+<userId>2</userId>
+<login>bar</login>
+<name>Bartosz</name>
+<surname>Graczykowski</surname>
+</user>
+</users>
