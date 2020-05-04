@@ -40,6 +40,9 @@ int main()
 
             switch (choice)
             {
+            case '1':
+                budgetManager.addIncome();
+                break;
             case '6':
                 budgetManager.changeLoggedInUserPassword();
                 break;

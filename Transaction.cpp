@@ -36,9 +36,8 @@ void Transaction::setUserId(int newUserId)
 }
 
 
-void Transaction::setDate(tm newDate)
+void Transaction::setDate()
 {
-    date = newDate;
 }
 
 

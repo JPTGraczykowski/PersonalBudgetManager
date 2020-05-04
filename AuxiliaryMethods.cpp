@@ -15,6 +15,7 @@ char AuxiliaryMethods::getChar()
     string input = "";
     char character  = {0};
 
+    cin.sync();
     while (true)
     {
         getline(cin, input);
@@ -27,6 +28,16 @@ char AuxiliaryMethods::getChar()
         cout << "Enter a single character!" << endl;
     }
     return character;
+}
+
+
+float AuxiliaryMethods::getCurrnecyFloat()
+{
+    float input = 0;
+    cin.sync();
+    cin>>input;
+
+    return round(input*100)/100;
 }
 
 
