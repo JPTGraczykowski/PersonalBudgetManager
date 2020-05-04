@@ -138,11 +138,11 @@ void UserManager::changeLoggedInUserPassword()
         if (users[i].getId() == loggedInUserId)
         {
             users[i].setPassword(newPassword);
-            cout << "Password has benn changed." << endl << endl;
+            cout << "Password has been changed." << endl << endl;
             system("pause");
         }
     }
-    //userFile.addAllUsersToFile(users);
+    userFile.addAllUsersToFile(users);
 }
 
 

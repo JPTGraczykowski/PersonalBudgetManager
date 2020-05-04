@@ -8,8 +8,9 @@ int main()
 {
     UserManager userManager("users.xml");
     userManager.listAllUsers();
-    userManager.registerUser();
-    userManager.registerUser();
+    userManager.logInUser();
+    userManager.changeLoggedInUserPassword();
+
 
     return 0;
 }

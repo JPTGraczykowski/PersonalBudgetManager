@@ -40,6 +40,12 @@ vector<User> UserFile::getUsersFromFile()
             users.push_back(user);
         }
     }
+    else
+    {
+        system("clr");
+        cout<<"XML file error!";
+        system("pause");
+    }
 
     return users;
 }
@@ -66,6 +72,53 @@ void UserFile::addUserToFile(User user)
         file.AddElem("SURNAME", user.getSurname());
 
         file.Save(getFileName().c_str());
+    }
+    else
+    {
+        system("clr");
+        cout<<"XML file error!";
+        system("pause");
+    }
+}
+
+
+void UserFile::addAllUsersToFile(vector<User> users)
+{
+    CMarkup file;
+
+    bool fileExists = file.Load(getFileName().c_str());
+
+    if(fileExists)
+    {
+        file.FindElem(); //go to USERS
+        file.IntoElem(); //go to USERS
+
+        while(file.FindElem("USER"))
+        {
+            file.RemoveElem();
+        }
+
+        for(unsigned int i=0; i<users.size(); i++)
+        {
+            file.AddElem("USER");
+            file.IntoElem();
+
+            file.AddElem("USER_ID", users[i].getId());
+            file.AddElem("LOGIN", users[i].getLogin());
+            file.AddElem("PASSWORD", users[i].getPassword());
+            file.AddElem("NAME", users[i].getName());
+            file.AddElem("SURNAME", users[i].getSurname());
+
+            file.OutOfElem();
+        }
+
+        file.Save(getFileName().c_str());
+    }
+    else
+    {
+        system("clr");
+        cout<<"XML file error!";
+        system("pause");
     }
 }
 
