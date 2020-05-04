@@ -11,8 +11,11 @@ using namespace std;
 class AuxiliaryMethods
 {
 public:
+    static char getChar();
     static string getLine();
     static int convertStringToInt(string stringToChange);
+    static string convertIntToString(int intToChange);
+
 };
 
 #endif // AUXILIARYMETHODS_H
