@@ -1,11 +1,5 @@
 #include "UserManager.h"
 
-UserManager::UserManager()
-{
-
-}
-
-
 int UserManager::getLoggedInUserId()
 {
     return loggedInUserId;
@@ -20,12 +14,12 @@ vector<User> UserManager::getUsersVector()
 
 void UserManager::registerUser()
 {
-system("cls");
+    system("cls");
     cout<<" >>> REGISTRATION <<< "<<endl<<endl;
     User user = provideUserDetails();
 
     users.push_back(user);
-    //userFile.addUserToFile(user);
+    userFile.addUserToFile(user);
 
     cout << endl << "User is registered" << endl << endl;
     system("pause");
@@ -75,7 +69,7 @@ int UserManager::getNewUserId()
 
 bool UserManager::loginExists(string login)
 {
-    for (int i=0; i<users.size(); i++)
+    for (unsigned int i=0; i<users.size(); i++)
     {
         if(users[i].getLogin() == login)
         {
@@ -97,7 +91,7 @@ void UserManager::logInUser()
     cout << endl << "Enter the login: ";
     login = AuxiliaryMethods::getLine();
 
-    for(int i=0; i<users.size(); i++)
+    for(unsigned int i=0; i<users.size(); i++)
     {
         if (users[i].getLogin() == login)
         {
@@ -139,16 +133,16 @@ void UserManager::changeLoggedInUserPassword()
     cout << "Enter a new password: ";
     newPassword = AuxiliaryMethods::getLine();
 
-    for (int i=0; i<users.size(); i++)
+    for (unsigned int i=0; i<users.size(); i++)
     {
         if (users[i].getId() == loggedInUserId)
         {
             users[i].setPassword(newPassword);
-            cout << "Password has benn changed." << endl << endl;
+            cout << "Password has been changed." << endl << endl;
             system("pause");
         }
     }
-    //userFile.addAllUsersToFile(users);
+    userFile.addAllUsersToFile(users);
 }
 
 
@@ -158,4 +152,15 @@ bool UserManager::isUserLoggedIn()
         return true;
     else
         return false;
+}
+
+
+void UserManager::listAllUsers()
+{
+    for(unsigned int i = 0; i<users.size(); i++)
+    {
+        cout<<endl<<"ID: "<<users[i].getId()<<endl;
+        cout<<endl<<"LOGIN: "<<users[i].getLogin()<<endl;
+    }
+    system("pause");
 }

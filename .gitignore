@@ -5,3 +5,4 @@ main — kopia.cpp
 *.cbp
 *.depend
 *.layout
+*.xml
