@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <windows.h>
+
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -12,11 +15,12 @@ class TransactionManager
 {
     const int LOGGED_IN_USER_ID;
 
-    string setTodayDate();
-    string setOtherDate();
-    bool isDateCorect();
-    int getDaysInMonthNumber();
-    bool isYearLeap();
+    tm setTodayDate();
+    tm setOtherDate();
+    tm getDateFromString(string inputDate);
+    bool isDateCorect(tm date);
+    int getDaysInMonthNumber(int month, int year);
+    bool isYearLeap(int year);
     vector<string> setPeriodOfTime();
     bool isDateAEarlierThanDateB();
     float countTheBalanceDifference();
@@ -24,6 +28,7 @@ class TransactionManager
 public:
     TransactionManager(int loggedInUserId) : LOGGED_IN_USER_ID(loggedInUserId) {};
     int getLoggedInUserId();
+    tm setDateOfTransaction();
     void showCurrentMonthBalance();
     void showPreviousMonthBalance();
     void showOtherPeriodOfTimeBalance();

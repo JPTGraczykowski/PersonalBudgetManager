@@ -22,7 +22,7 @@ Income IncomeManager::provideIncomeDetails()
     income.setIncomeId(1);
     income.setUserId(getLoggedInUserId());
 
-    income.setDate();
+    income.setDate(setDateOfTransaction());
 
     cout<<endl<<"Set an item of the income: ";
     income.setItem(AuxiliaryMethods::getLine());
