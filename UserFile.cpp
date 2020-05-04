@@ -29,11 +29,11 @@ vector<User> UserFile::getUsersFromFile()
     CMarkup file;
 
     bool fileExists = file.Load(getFileName().c_str());
-    file.FindElem(); //go to USERS
-    file.IntoElem(); //go to USERS
 
     if(fileExists)
     {
+        file.FindElem(); //go to USERS
+        file.IntoElem(); //go to USERS
         while(file.FindElem("USER"))
         {
             user = getUserDetails(file);
@@ -50,19 +50,23 @@ void UserFile::addUserToFile(User user)
     CMarkup file;
 
     bool fileExists = file.Load(getFileName().c_str());
-    file.FindElem(); //go to USERS
-    file.IntoElem(); //go to USERS
 
-    file.AddElem("USER");
-    file.IntoElem();
+    if(fileExists)
+    {
+        file.FindElem(); //go to USERS
+        file.IntoElem(); //go to USERS
 
-    file.AddElem("USER_ID", user.getId());
-    file.AddElem("LOGIN", user.getLogin());
-    file.AddElem("PASSWORD", user.getPassword());
-    file.AddElem("NAME", user.getName());
-    file.AddElem("SURNAME", user.getSurname());
+        file.AddElem("USER");
+        file.IntoElem();
 
-    file.Save(getFileName().c_str());
+        file.AddElem("USER_ID", user.getId());
+        file.AddElem("LOGIN", user.getLogin());
+        file.AddElem("PASSWORD", user.getPassword());
+        file.AddElem("NAME", user.getName());
+        file.AddElem("SURNAME", user.getSurname());
+
+        file.Save(getFileName().c_str());
+    }
 }
 
 

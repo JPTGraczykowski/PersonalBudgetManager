@@ -13,7 +13,7 @@ int  AuxiliaryMethods::convertStringToInt(string stringToChange)
 {
     int intToReturn;
     istringstream iss(stringToChange);
-    iss >> stringToChange;
+    iss >> intToReturn;
 
     return intToReturn;
 }

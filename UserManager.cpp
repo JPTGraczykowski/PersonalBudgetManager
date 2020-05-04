@@ -14,7 +14,7 @@ vector<User> UserManager::getUsersVector()
 
 void UserManager::registerUser()
 {
-system("cls");
+    system("cls");
     cout<<" >>> REGISTRATION <<< "<<endl<<endl;
     User user = provideUserDetails();
 
@@ -159,7 +159,8 @@ void UserManager::listAllUsers()
 {
     for(unsigned int i = 0; i<users.size(); i++)
     {
-        cout<<users[i].getLogin()<<endl;
+        cout<<endl<<"ID: "<<users[i].getId()<<endl;
+        cout<<endl<<"LOGIN: "<<users[i].getLogin()<<endl;
     }
     system("pause");
 }
