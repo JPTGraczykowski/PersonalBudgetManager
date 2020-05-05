@@ -43,6 +43,9 @@ int main()
             case '1':
                 budgetManager.addIncome();
                 break;
+            case '2':
+                budgetManager.addExpense();
+                break;
             case '6':
                 budgetManager.changeLoggedInUserPassword();
                 break;
