@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -13,6 +14,8 @@ class AuxiliaryMethods
 public:
     static char getChar();
     static string getLine();
+    static int getInt();
+    static float getCurrnecyFloat();
     static int convertStringToInt(string stringToChange);
     static string convertIntToString(int intToChange);
 

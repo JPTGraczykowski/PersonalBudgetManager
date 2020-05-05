@@ -10,12 +10,18 @@ void BudgetManager::registerUser()
 void BudgetManager::logInUser()
 {
     userManager.logInUser();
+    if(isUserLoggedIn())
+    {
+        incomeManager = new IncomeManager(userManager.getLoggedInUserId());
+    }
 }
 
 
 void BudgetManager::logOutUser()
 {
     userManager.logOutUser();
+    delete incomeManager;
+    incomeManager = NULL;
 }
 
 
@@ -28,6 +34,15 @@ void BudgetManager::changeLoggedInUserPassword()
 bool BudgetManager::isUserLoggedIn()
 {
     return userManager.isUserLoggedIn();
+}
+
+
+void BudgetManager::addIncome()
+{
+    if(isUserLoggedIn())
+    {
+        incomeManager -> addIncome();
+    }
 }
 
 
@@ -56,6 +71,7 @@ char BudgetManager::chooseFromUserMenu()
     system("cls");
     cout << "    $$$ WELCOME $$$" << endl;
     cout << "---------------------------" << endl;
+    cout << "1. Add income" << endl;
     cout << "6. Change password" << endl;
     cout << "9. Log out" << endl;
     cout << "---------------------------" << endl;
