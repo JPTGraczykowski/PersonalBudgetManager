@@ -3,6 +3,7 @@
 
 #include "UserManager.h"
 #include "IncomeManager.h"
+#include "ExpenseManager.h"
 #include "AuxiliaryMethods.h"
 
 #include<iostream>
@@ -14,6 +15,7 @@ class BudgetManager
 {
     UserManager userManager;
     IncomeManager *incomeManager;
+    ExpenseManager *expenseManager;
 
 public:
     BudgetManager(string userFileName) : userManager(userFileName)
@@ -24,6 +26,8 @@ public:
     {
         delete incomeManager;
         incomeManager = NULL;
+        delete expenseManager;
+        expenseManager = NULL;
     };
 
     void registerUser();
@@ -33,6 +37,7 @@ public:
     bool isUserLoggedIn();
 
     void addIncome();
+    void addExpense();
 
     char chooseFromMainMenu();
     char chooseFromUserMenu();

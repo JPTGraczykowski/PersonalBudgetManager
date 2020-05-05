@@ -26,8 +26,6 @@ tm TransactionManager::setDateOfTransaction()
         {
         case('1'):
             date = setTodayDate();
-            cout<<endl<<"Date: "<<date.tm_year<< " " <<date.tm_mon<<" "<<date.tm_mday<<endl;
-        system("pause");
             isDateSet = true;
             break;
         case('2'):
