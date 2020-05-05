@@ -12,7 +12,7 @@ void BudgetManager::logInUser()
     userManager.logInUser();
     if(isUserLoggedIn())
     {
-        incomeManager = new IncomeManager(userManager.getLoggedInUserId());
+        incomeManager = new IncomeManager(userManager.getLoggedInUserId(), INCOME_FILE_NAME);
         expenseManager = new ExpenseManager(userManager.getLoggedInUserId());
     }
 }

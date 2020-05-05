@@ -15,10 +15,10 @@ using namespace std;
 
 class IncomeFile : public DataFile
 {
-    Income getIncomeDetails;
+    Income getIncomeDetails(CMarkup &file);
 public:
-    IncomeFile(string incomeFileName) : DataFile(incomeFileName);
-    vector<Income> getIncomesOfLoggedInUserFromFile;
+    IncomeFile(string incomeFileName) : DataFile(incomeFileName) {};
+    vector<Income> getIncomesOfLoggedInUserFromFile(int loggedInUserId);
     void addIncomeToFile(Income income);
 
 };

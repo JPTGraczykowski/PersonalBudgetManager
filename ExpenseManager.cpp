@@ -28,7 +28,7 @@ Expense ExpenseManager::provideExpenseDetails()
     expense.setItem(AuxiliaryMethods::getLine());
 
     cout<<endl<<"Set amount of the expense: ";
-    expense.setAmount(AuxiliaryMethods::getCurrnecyFloat());
+    expense.setAmount(AuxiliaryMethods::getCurrencyFloat());
 
     return expense;
 }

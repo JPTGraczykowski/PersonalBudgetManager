@@ -17,7 +17,6 @@ class TransactionManager
 
     tm setTodayDate();
     tm setOtherDate();
-    tm getDateFromString(string inputDate);
     bool isDateCorect(tm date);
     int getDaysInMonthNumber(int month, int year);
     bool isYearLeap(int year);

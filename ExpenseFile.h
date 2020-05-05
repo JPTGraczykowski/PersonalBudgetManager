@@ -16,6 +16,7 @@ using namespace std;
 class ExpenseFile : public DataFile
 {
     Expense getExpenseDetails;
+    int loggedInUserId;
 public:
     ExpenseFile(string expenseFileName) : DataFile(expenseFileName);
     vector<Expense> getExpensesOfLoggedInUserFromFile;

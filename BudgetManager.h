@@ -16,11 +16,15 @@ class BudgetManager
     UserManager userManager;
     IncomeManager *incomeManager;
     ExpenseManager *expenseManager;
+    const string INCOME_FILE_NAME;
+    const string EXPENSE_FILE_NAME;
 
 public:
-    BudgetManager(string userFileName) : userManager(userFileName)
+    BudgetManager(string userFileName, string incomeFileName, string expenseFileName)
+    : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName)
     {
         incomeManager = NULL;
+        expenseManager = NULL;
     };
     ~BudgetManager()
     {
