@@ -29,8 +29,6 @@ Income IncomeManager::provideIncomeDetails()
 
     cout<<endl<<"Set amount of the income: ";
     income.setAmount(AuxiliaryMethods::getCurrnecyFloat());
-    cout<<endl<<income.getAmount();
-
 
     return income;
 }

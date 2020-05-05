@@ -9,9 +9,10 @@ int TransactionManager::getLoggedInUserId()
 tm TransactionManager::setDateOfTransaction()
 {
     char choice;
+    bool isDateSet = false;
     tm date;
 
-    while(true)
+    while(!isDateSet)
     {
         system("cls");
         cout<<"Enter the date of the transaction.";
@@ -25,9 +26,13 @@ tm TransactionManager::setDateOfTransaction()
         {
         case('1'):
             date = setTodayDate();
+            cout<<endl<<"Date: "<<date.tm_year<< " " <<date.tm_mon<<" "<<date.tm_mday<<endl;
+        system("pause");
+            isDateSet = true;
             break;
         case('2'):
             date = setOtherDate();
+            isDateSet = true;
             break;
         default:
             cout<<endl<<"Wrong number.";
@@ -45,8 +50,8 @@ tm TransactionManager::setTodayDate()
 
     tm *indicateDate = localtime(&now);
     tm date;
-    date.tm_year = indicateDate->tm_year;
-    date.tm_mon = indicateDate->tm_mon;
+    date.tm_year = 1900 + indicateDate->tm_year;
+    date.tm_mon = 1 + indicateDate->tm_mon;
     date.tm_mday = indicateDate->tm_mday;
 
     return date;
@@ -59,13 +64,13 @@ tm TransactionManager::setOtherDate()
     int year, month, day;
     string inputDate = "";
 
-
     while(true)
     {
         system("cls");
         cout<<"Enter the date of the income (YYYY-MM-DD): "<<endl;
         inputDate = AuxiliaryMethods::getLine();
         date = getDateFromString(inputDate);
+
         if(isDateCorect(date))
             break;
         else
@@ -84,6 +89,8 @@ tm TransactionManager::getDateFromString(string inputDate)
     tm date;
     string simplePartOfDate = "";
     int numberOfDateParts = 1;
+
+    inputDate = inputDate + "-";
 
     for (int unsigned i = 0; i < inputDate.length(); i++)
     {
