@@ -37,18 +37,14 @@ vector<Income> IncomeFile::getIncomesOfLoggedInUserFromFile(int loggedInUserId)
         file.IntoElem(); //go to INCOMES
         while(file.FindElem("INCOME"))
         {
-            file.IntoElem();
-            file.FindElem("USER_ID");
-            //if(AuxiliaryMethods::convertStringToInt(file.GetData()) == loggedInUserId)
-            //{
-                income = getIncomeDetails(file);
+            income = getIncomeDetails(file);
+            if(income.getUserId() == loggedInUserId)
                 incomes.push_back(income);
-            //}
         }
     }
     else
     {
-        system("clr");
+        system("cls");
         cout<<"XML file error!";
         system("pause");
     }

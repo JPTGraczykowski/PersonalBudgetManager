@@ -21,8 +21,13 @@ class IncomeManager : public TransactionManager
 
 public:
     IncomeManager(int loggedInUserId, string incomeFileName)
-     : TransactionManager(loggedInUserId), incomeFile(incomeFileName) {};
+     : TransactionManager(loggedInUserId), incomeFile(incomeFileName)
+     {
+         incomes = incomeFile.getIncomesOfLoggedInUserFromFile(getLoggedInUserId());
+         showAllIncomes();
+     };
     void addIncome();
+    void showAllIncomes();
 
 };
 #endif // INCOMEMANAGER_H
