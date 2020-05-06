@@ -18,9 +18,11 @@ public:
     static int getInt();
     static float getCurrencyFloat();
     static int convertStringToInt(string stringToChange);
-    static string convertIntToString(int intToChange);
     static float convertStringToFloat(string stringToChange);
+    static string convertIntToString(int intToChange);
+    static string convertFloatToString(float floatToString);
     static tm getDateFromString(string inputDate);
+    static string convertDateToString(tm inputDate);
 
 };
 

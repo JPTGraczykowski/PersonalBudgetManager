@@ -75,7 +75,7 @@ void UserFile::addUserToFile(User user)
     }
     else
     {
-        system("clr");
+        system("cls");
         cout<<"XML file error!";
         system("pause");
     }

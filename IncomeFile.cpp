@@ -63,3 +63,35 @@ int IncomeFile::getLastIncomeId()
 {
     return lastIncomeId;
 }
+
+
+void IncomeFile::addIncomeToFile(Income income)
+{
+    CMarkup file;
+
+    bool fileExists = file.Load(getFileName().c_str());
+
+    if(fileExists)
+    {
+        file.FindElem(); //go to INCOMES
+        file.IntoElem(); //go to INCOMES
+
+        file.AddElem("INCOME");
+        file.IntoElem();
+
+        file.AddElem("INCOME_ID", income.getIncomeId());
+        file.AddElem("USER_ID", income.getUserId());
+        file.AddElem("DATE", AuxiliaryMethods::convertDateToString(income.getDate()));
+        file.AddElem("ITEM", income.getItem());
+        file.AddElem("AMOUNT", income.getAmount());
+
+        file.Save(getFileName().c_str());
+    }
+    else
+    {
+        system("cls");
+        cout<<"XML file error!";
+        system("pause");
+    }
+
+}

@@ -100,6 +100,16 @@ float AuxiliaryMethods::convertStringToFloat(string stringToChange)
 }
 
 
+string AuxiliaryMethods::convertFloatToString(float floatToChange)
+{
+    string stringToReturn = "";
+    ostringstream ss;
+    ss << floatToChange;
+    string str = ss.str();
+    return str;
+}
+
+
 tm AuxiliaryMethods::getDateFromString(string inputDate)
 {
     tm date;
@@ -133,6 +143,23 @@ tm AuxiliaryMethods::getDateFromString(string inputDate)
         }
     }
     return date;
+}
+
+
+string AuxiliaryMethods::convertDateToString(tm inputDate)
+{
+    string stringDate = "";
+    string year = "";
+    string month = "";
+    string day = "";
+
+    year = convertIntToString(inputDate.tm_year);
+    month = convertIntToString(inputDate.tm_mon);
+    day = convertIntToString(inputDate.tm_mday);
+
+    stringDate += year + "-" + month + "-" + day;
+
+    return stringDate;
 }
 
 

@@ -11,6 +11,8 @@ void IncomeManager::addIncome()
     income = provideIncomeDetails();
     incomes.push_back(income);
 
+    incomeFile.addIncomeToFile(income);
+
     system("pause");
 }
 
