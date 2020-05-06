@@ -19,7 +19,7 @@ Income IncomeManager::provideIncomeDetails()
 {
     Income income;
 
-    income.setIncomeId(1);
+    income.setIncomeId(incomeFile.getLastIncomeId() + 1);
     income.setUserId(getLoggedInUserId());
 
     income.setDate(setDateOfTransaction());

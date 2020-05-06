@@ -30,6 +30,7 @@ vector<Income> IncomeFile::getIncomesOfLoggedInUserFromFile(int loggedInUserId)
     CMarkup file;
 
     bool fileExists = file.Load(getFileName().c_str());
+    bool isFileEmpty = true;
 
     if(fileExists)
     {
@@ -37,10 +38,15 @@ vector<Income> IncomeFile::getIncomesOfLoggedInUserFromFile(int loggedInUserId)
         file.IntoElem(); //go to INCOMES
         while(file.FindElem("INCOME"))
         {
+            isFileEmpty = false;
             income = getIncomeDetails(file);
             if(income.getUserId() == loggedInUserId)
                 incomes.push_back(income);
         }
+        if (!isFileEmpty)
+            lastIncomeId = income.getIncomeId();
+        else
+            lastIncomeId = 0;
     }
     else
     {
@@ -50,4 +56,10 @@ vector<Income> IncomeFile::getIncomesOfLoggedInUserFromFile(int loggedInUserId)
     }
 
     return incomes;
+}
+
+
+int IncomeFile::getLastIncomeId()
+{
+    return lastIncomeId;
 }

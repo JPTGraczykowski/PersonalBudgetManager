@@ -15,11 +15,14 @@ using namespace std;
 
 class IncomeFile : public DataFile
 {
+    int lastIncomeId;
+
     Income getIncomeDetails(CMarkup &file);
 public:
     IncomeFile(string incomeFileName) : DataFile(incomeFileName) {};
     vector<Income> getIncomesOfLoggedInUserFromFile(int loggedInUserId);
     void addIncomeToFile(Income income);
+    int getLastIncomeId();
 
 };
 #endif // INCOMEFILE_H
