@@ -23,6 +23,7 @@ public:
     vector<Income> getIncomesOfLoggedInUserFromFile(int loggedInUserId);
     void addIncomeToFile(Income income);
     int getLastIncomeId();
+    void setLastIncomeId(int newLastIncomeId);
 
 };
 #endif // INCOMEFILE_H

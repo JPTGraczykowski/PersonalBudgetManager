@@ -15,12 +15,15 @@ using namespace std;
 
 class ExpenseFile : public DataFile
 {
-    Expense getExpenseDetails;
-    int loggedInUserId;
+    int lastExpenseId;
+
+    Expense getExpenseDetails(CMarkup &file);
 public:
-    ExpenseFile(string expenseFileName) : DataFile(expenseFileName);
-    vector<Expense> getExpensesOfLoggedInUserFromFile;
+    ExpenseFile(string expenseFileName) : DataFile(expenseFileName) {};
+    vector<Expense> getExpensesOfLoggedInUserFromFile(int loggedInUserId);
     void addExpenseToFile(Expense expense);
+    int getLastExpenseId();
+    void setLastExpenseId(int newLastExpenseId);
 
 };
 #endif // EXPENSEFILE_H

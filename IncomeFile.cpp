@@ -65,6 +65,12 @@ int IncomeFile::getLastIncomeId()
 }
 
 
+void IncomeFile::setLastIncomeId(int newLastIncomeId)
+{
+    lastIncomeId = newLastIncomeId;
+}
+
+
 void IncomeFile::addIncomeToFile(Income income)
 {
     CMarkup file;

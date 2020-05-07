@@ -12,6 +12,7 @@ void IncomeManager::addIncome()
     incomes.push_back(income);
 
     incomeFile.addIncomeToFile(income);
+    incomeFile.setLastIncomeId(income.getIncomeId());
 
     system("pause");
 }
