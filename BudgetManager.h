@@ -43,6 +43,9 @@ public:
     void addIncome();
     void addExpense();
 
+    void showTheCurrentMonthBalance();
+    void showThePreviousMonthBalance();
+
     char chooseFromMainMenu();
     char chooseFromUserMenu();
 };

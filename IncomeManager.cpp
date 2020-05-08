@@ -40,19 +40,43 @@ Income IncomeManager::provideIncomeDetails()
 void IncomeManager::showAllIncomes()
 {
     system("cls");
-    for(int i=0; i<incomes.size(); i++)
+    for(unsigned int i=0; i<incomes.size(); i++)
     {
-        cout<<"INCOME_ID: "<<incomes[i].getIncomeId()<<endl;
-        cout<<"USER_ID: "<<incomes[i].getUserId()<<endl;
-        tm date = incomes[i].getDate();
-        cout<<"DATE: "<<date.tm_year<<"-"<<date.tm_mon<<"-"<<date.tm_mday<<endl;
-        cout<<"ITEM: "<<incomes[i].getItem()<<endl;
-        cout<<"AMOUNT: "<<incomes[i].getAmount()<<endl;
-        cout<<"_______________"<<endl;
+        incomes[i].showIncomeDetails();
     }
     system("pause");
 }
 
+
+void IncomeManager::showIncomesFromTheMonth(int month)
+{
+    tm dateOfIncome;
+
+    vector<Income> incomesFromTheMonth;
+
+    for(unsigned int i = 0; i<incomes.size(); i++)
+    {
+        dateOfIncome = incomes[i].getDate();
+        if(dateOfIncome.tm_mon == month)
+        {
+            incomesFromTheMonth.push_back(incomes[i]);
+        }
+    }
+
+    prepareIncomesToPresent(incomesFromTheMonth);
+
+    for(unsigned int i = 0; i < incomesFromTheMonth.size(); i++)
+    {
+        incomesFromTheMonth[i].showIncomeDetails();
+    }
+}
+
+
+void IncomeManager::prepareIncomesToPresent(vector<Income> &incomesFromTheMonth)
+{
+    sort(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
+    reverse(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
+}
 
 
 

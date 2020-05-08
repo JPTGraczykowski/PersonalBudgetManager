@@ -8,6 +8,7 @@ using namespace std;
 
 class Transaction
 {
+protected:
     int userId;
     tm date;
     string item;
@@ -23,6 +24,18 @@ public:
     void setDate(tm newDate);
     void setItem(string newItem);
     void setAmount(float newAmount);
+
+    bool operator < (const Transaction &x) const
+    {
+        if(date.tm_year < x.date.tm_year)
+            return true;
+        else if(date.tm_mon < x.date.tm_mon)
+            return true;
+        else if(date.tm_mday < x.date.tm_mday)
+            return true;
+        else
+            return false;
+    };
 };
 
 #endif // TRANSACTION_H

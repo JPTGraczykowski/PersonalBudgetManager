@@ -9,6 +9,8 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
+
 
 using namespace std;
 
@@ -18,6 +20,7 @@ class IncomeManager : public TransactionManager
     vector<Income> incomes;
 
     Income provideIncomeDetails();
+    void prepareIncomesToPresent(vector<Income> &incomesFromTheMonth);
 
 public:
     IncomeManager(int loggedInUserId, string incomeFileName)
@@ -28,6 +31,7 @@ public:
      };
     void addIncome();
     void showAllIncomes();
+    void showIncomesFromTheMonth(int month);
 
 };
 #endif // INCOMEMANAGER_H
