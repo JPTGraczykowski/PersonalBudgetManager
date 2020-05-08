@@ -19,6 +19,8 @@ class BudgetManager
     const string INCOME_FILE_NAME;
     const string EXPENSE_FILE_NAME;
 
+    void showTheBalanceSummary();
+
 public:
     BudgetManager(string userFileName, string incomeFileName, string expenseFileName)
     : userManager(userFileName), INCOME_FILE_NAME(incomeFileName), EXPENSE_FILE_NAME(expenseFileName)
@@ -42,6 +44,10 @@ public:
 
     void addIncome();
     void addExpense();
+
+    void showTheCurrentMonthBalance();
+    void showThePreviousMonthBalance();
+    void showTheOtherPeriodOfTimeBalance();
 
     char chooseFromMainMenu();
     char chooseFromUserMenu();

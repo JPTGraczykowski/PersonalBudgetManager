@@ -41,19 +41,62 @@ Income IncomeManager::provideIncomeDetails()
 void IncomeManager::showAllIncomes()
 {
     system("cls");
-    for(int i=0; i<incomes.size(); i++)
+    for(unsigned int i=0; i<incomes.size(); i++)
     {
-        cout<<"INCOME_ID: "<<incomes[i].getIncomeId()<<endl;
-        cout<<"USER_ID: "<<incomes[i].getUserId()<<endl;
-        tm date = incomes[i].getDate();
-        cout<<"DATE: "<<date.tm_year<<"-"<<date.tm_mon<<"-"<<date.tm_mday<<endl;
-        cout<<"ITEM: "<<incomes[i].getItem()<<endl;
-        cout<<"AMOUNT: "<<incomes[i].getAmount()<<endl;
-        cout<<"_______________"<<endl;
+        incomes[i].showIncomeDetails();
     }
     system("pause");
 }
 
 
+void IncomeManager::showIncomesFromTheMonth(int month)
+{
+    tm dateOfIncome;
+    vector<Income> incomesFromTheMonth;
+    sumOfTheTransactions = 0;
+
+    for(unsigned int i = 0; i<incomes.size(); i++)
+    {
+        dateOfIncome = incomes[i].getDate();
+        if(dateOfIncome.tm_mon == month)
+        {
+            incomesFromTheMonth.push_back(incomes[i]);
+            sumOfTheTransactions += incomes[i].getAmount();
+        }
+    }
+
+    sort(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
+
+    for(unsigned int i = 0; i < incomesFromTheMonth.size(); i++)
+    {
+        incomesFromTheMonth[i].showIncomeDetails();
+    }
+}
+
+
+void IncomeManager::showIncomesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+{
+    tm dateOfIncome;
+    vector<Income> incomesFromTheOtherPeriodOfTime;
+    sumOfTheTransactions = 0;
+
+    for (unsigned int i = 0; i<incomes.size(); i++)
+    {
+        dateOfIncome = incomes[i].getDate();
+        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfIncome, startDate))
+           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfIncome)))
+           {
+               incomesFromTheOtherPeriodOfTime.push_back(incomes[i]);
+               sumOfTheTransactions += incomes[i].getAmount();
+           }
+    }
+
+    sort(incomesFromTheOtherPeriodOfTime.begin(), incomesFromTheOtherPeriodOfTime.end());
+
+    for(unsigned int i = 0; i<incomesFromTheOtherPeriodOfTime.size(); i++)
+    {
+        incomesFromTheOtherPeriodOfTime[i].showIncomeDetails();
+    }
+}
 
 

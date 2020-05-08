@@ -14,6 +14,7 @@ public:
     Expense();
     int getExpenseId();
     void setExpenseId(int newId);
+    void showExpenseDetails();
 };
 
 #endif // EXPENSE_H

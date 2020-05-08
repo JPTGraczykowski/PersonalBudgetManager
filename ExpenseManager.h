@@ -6,9 +6,10 @@
 #include "Expense.h"
 #include "ExpenseFile.h"
 
-#include <iostream>Expense
+#include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 class ExpenseManager : public TransactionManager
 {
@@ -22,10 +23,11 @@ public:
     : TransactionManager(loggedInUserId), expenseFile(expenseFileName)
      {
          expenses = expenseFile.getExpensesOfLoggedInUserFromFile(getLoggedInUserId());
-         showAllExpenses();
      };
     void addExpense();
     void showAllExpenses();
+    void showExpensesFromTheMonth(int month);
+    void showExpensesFromTheOtherPeriodOfTime(tm startDate,tm stopDate);
 };
 
 #endif // EXPENSEMANAGER_H

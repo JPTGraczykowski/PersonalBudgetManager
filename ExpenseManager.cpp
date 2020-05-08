@@ -43,17 +43,58 @@ void ExpenseManager::showAllExpenses()
     system("cls");
     for(int i=0; i<expenses.size(); i++)
     {
-        cout<<"EXPENSE_ID: "<<expenses[i].getExpenseId()<<endl;
-        cout<<"USER_ID: "<<expenses[i].getUserId()<<endl;
-        tm date = expenses[i].getDate();
-        cout<<"DATE: "<<date.tm_year<<"-"<<date.tm_mon<<"-"<<date.tm_mday<<endl;
-        cout<<"ITEM: "<<expenses[i].getItem()<<endl;
-        cout<<"AMOUNT: "<<expenses[i].getAmount()<<endl;
-        cout<<"_______________"<<endl;
+        expenses[i].showExpenseDetails();
     }
     system("pause");
 }
 
 
+void ExpenseManager::showExpensesFromTheMonth(int month)
+{
+    tm dateOfExpense;
+    vector<Expense> expensesFromTheMonth;
+    sumOfTheTransactions = 0;
+
+    for(unsigned int i=0; i<expenses.size(); i++)
+    {
+        dateOfExpense = expenses[i].getDate();
+        if(dateOfExpense.tm_mon == month)
+        {
+            expensesFromTheMonth.push_back(expenses[i]);
+            sumOfTheTransactions += expenses[i].getAmount();
+        }
+    }
+
+    sort(expensesFromTheMonth.begin(), expensesFromTheMonth.end());
+
+    for(unsigned int i=0; i<expensesFromTheMonth.size(); i++)
+    {
+        expensesFromTheMonth[i].showExpenseDetails();
+    }
+}
 
 
+void ExpenseManager::showExpensesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+{
+    tm dateOfExpense;
+    vector<Expense> expensesFromTheOtherPeriodOfTime;
+    sumOfTheTransactions = 0;
+
+    for (unsigned int i = 0; i<expenses.size(); i++)
+    {
+        dateOfExpense = expenses[i].getDate();
+        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfExpense, startDate))
+           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfExpense)))
+           {
+               expensesFromTheOtherPeriodOfTime.push_back(expenses[i]);
+               sumOfTheTransactions += expenses[i].getAmount();
+           }
+    }
+
+    sort(expensesFromTheOtherPeriodOfTime.begin(), expensesFromTheOtherPeriodOfTime.end());
+
+    for(unsigned int i = 0; i<expensesFromTheOtherPeriodOfTime.size(); i++)
+    {
+        expensesFromTheOtherPeriodOfTime[i].showExpenseDetails();
+    }
+}
