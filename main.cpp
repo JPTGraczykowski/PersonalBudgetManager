@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     char choice;
-    BudgetManager budgetManager("users.xml");
+    BudgetManager budgetManager("users.xml", "incomes.xml", "expenses.xml");
 
     while(true)
     {

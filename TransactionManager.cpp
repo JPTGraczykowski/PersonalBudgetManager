@@ -67,7 +67,7 @@ tm TransactionManager::setOtherDate()
         system("cls");
         cout<<"Enter the date of the income (YYYY-MM-DD): "<<endl;
         inputDate = AuxiliaryMethods::getLine();
-        date = getDateFromString(inputDate);
+        date = AuxiliaryMethods::getDateFromString(inputDate);
 
         if(isDateCorect(date))
             break;
@@ -80,43 +80,6 @@ tm TransactionManager::setOtherDate()
 
     return date;
 }
-
-
-tm TransactionManager::getDateFromString(string inputDate)
-{
-    tm date;
-    string simplePartOfDate = "";
-    int numberOfDateParts = 1;
-
-    inputDate = inputDate + "-";
-
-    for (int unsigned i = 0; i < inputDate.length(); i++)
-    {
-        if (inputDate[i] != '-')
-        {
-            simplePartOfDate += inputDate[i];
-        }
-        else
-        {
-            switch(numberOfDateParts)
-            {
-            case 1:
-                date.tm_year = AuxiliaryMethods::convertStringToInt(simplePartOfDate);
-                break;
-            case 2:
-                date.tm_mon = AuxiliaryMethods::convertStringToInt(simplePartOfDate);
-                break;
-            case 3:
-                date.tm_mday = AuxiliaryMethods::convertStringToInt(simplePartOfDate);
-                break;
-            }
-            simplePartOfDate = "";
-            numberOfDateParts++;
-        }
-    }
-    return date;
-}
-
 
 
 bool TransactionManager::isDateCorect(tm date)

@@ -4,7 +4,7 @@
 #include "AuxiliaryMethods.h"
 #include "TransactionManager.h"
 #include "Income.h"
-//#include "IncomeFile.h"
+#include "IncomeFile.h"
 
 #include <iostream>
 #include <vector>
@@ -14,14 +14,20 @@ using namespace std;
 
 class IncomeManager : public TransactionManager
 {
-    //IncomeFile incomeFile;
+    IncomeFile incomeFile;
     vector<Income> incomes;
 
     Income provideIncomeDetails();
 
 public:
-    IncomeManager(int loggedInUserId) : TransactionManager(loggedInUserId) {};
+    IncomeManager(int loggedInUserId, string incomeFileName)
+     : TransactionManager(loggedInUserId), incomeFile(incomeFileName)
+     {
+         incomes = incomeFile.getIncomesOfLoggedInUserFromFile(getLoggedInUserId());
+         showAllIncomes();
+     };
     void addIncome();
+    void showAllIncomes();
 
 };
 #endif // INCOMEMANAGER_H

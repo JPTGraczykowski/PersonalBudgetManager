@@ -61,24 +61,23 @@ void UserFile::addUserToFile(User user)
     {
         file.FindElem(); //go to USERS
         file.IntoElem(); //go to USERS
-
-        file.AddElem("USER");
-        file.IntoElem();
-
-        file.AddElem("USER_ID", user.getId());
-        file.AddElem("LOGIN", user.getLogin());
-        file.AddElem("PASSWORD", user.getPassword());
-        file.AddElem("NAME", user.getName());
-        file.AddElem("SURNAME", user.getSurname());
-
-        file.Save(getFileName().c_str());
     }
     else
     {
-        system("clr");
-        cout<<"XML file error!";
-        system("pause");
+        file.AddElem("USERS"); //create USERS
+        file.IntoElem(); //go to USERS
     }
+
+    file.AddElem("USER");
+    file.IntoElem();
+
+    file.AddElem("USER_ID", user.getId());
+    file.AddElem("LOGIN", user.getLogin());
+    file.AddElem("PASSWORD", user.getPassword());
+    file.AddElem("NAME", user.getName());
+    file.AddElem("SURNAME", user.getSurname());
+
+    file.Save(getFileName().c_str());
 }
 
 
@@ -117,7 +116,7 @@ void UserFile::addAllUsersToFile(vector<User> users)
     else
     {
         system("clr");
-        cout<<"XML file error!";
+        cout<<"File ''users.xml'' doesn't exist."<<endl;
         system("pause");
     }
 }

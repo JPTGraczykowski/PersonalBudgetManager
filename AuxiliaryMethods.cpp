@@ -50,7 +50,7 @@ int AuxiliaryMethods::getInt()
 }
 
 
-float AuxiliaryMethods::getCurrnecyFloat()
+float AuxiliaryMethods::getCurrencyFloat()
 {
     string input = "";
     float number = 0;
@@ -87,5 +87,80 @@ string AuxiliaryMethods::convertIntToString(int intToChange)
     string str = ss.str();
     return str;
 }
+
+
+float AuxiliaryMethods::convertStringToFloat(string stringToChange)
+{
+    float floatToReturn = 0;
+
+    stringstream myStream(stringToChange);
+    myStream >> floatToReturn;
+
+    return floatToReturn;
+}
+
+
+string AuxiliaryMethods::convertFloatToString(float floatToChange)
+{
+    string stringToReturn = "";
+    ostringstream ss;
+    ss << floatToChange;
+    string str = ss.str();
+    return str;
+}
+
+
+tm AuxiliaryMethods::getDateFromString(string inputDate)
+{
+    tm date;
+    string simplePartOfDate = "";
+    int numberOfDateParts = 1;
+
+    inputDate = inputDate + "-";
+
+    for (int unsigned i = 0; i < inputDate.length(); i++)
+    {
+        if (inputDate[i] != '-')
+        {
+            simplePartOfDate += inputDate[i];
+        }
+        else
+        {
+            switch(numberOfDateParts)
+            {
+            case 1:
+                date.tm_year = convertStringToInt(simplePartOfDate);
+                break;
+            case 2:
+                date.tm_mon = convertStringToInt(simplePartOfDate);
+                break;
+            case 3:
+                date.tm_mday = convertStringToInt(simplePartOfDate);
+                break;
+            }
+            simplePartOfDate = "";
+            numberOfDateParts++;
+        }
+    }
+    return date;
+}
+
+
+string AuxiliaryMethods::convertDateToString(tm inputDate)
+{
+    string stringDate = "";
+    string year = "";
+    string month = "";
+    string day = "";
+
+    year = convertIntToString(inputDate.tm_year);
+    month = convertIntToString(inputDate.tm_mon);
+    day = convertIntToString(inputDate.tm_mday);
+
+    stringDate += year + "-" + month + "-" + day;
+
+    return stringDate;
+}
+
 
 
