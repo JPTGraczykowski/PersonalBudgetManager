@@ -76,6 +76,8 @@ void BudgetManager::showTheCurrentMonthBalance()
 
     expenseManager -> showExpensesFromTheMonth(month);
 
+    showTheBalanceSummary();
+
     system("pause");
 }
 
@@ -100,7 +102,23 @@ void BudgetManager::showThePreviousMonthBalance()
 
     expenseManager -> showExpensesFromTheMonth(previousMonth);
 
+    showTheBalanceSummary();
+
     system("pause");
+}
+
+
+
+void BudgetManager::showTheBalanceSummary()
+{
+    float incomesSum = incomeManager -> getSumOfTheTransaction();
+    float expenseSum = expenseManager -> getSumOfTheTransaction();
+    float balance = incomesSum - expenseSum;
+
+    cout << endl << endl << "______________________________" << endl << endl;
+    cout << "SUM OF INCOMES: " << incomesSum << endl;
+    cout << "SUM OF EXPENSES: " << expenseSum << endl;
+    cout << "BALANCE: " << balance << endl << endl;
 }
 
 

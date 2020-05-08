@@ -122,4 +122,10 @@ int TransactionManager::getDaysInMonthNumber(int month, int year)
 }
 
 
+float TransactionManager::getSumOfTheTransaction()
+{
+    return sumOfTheTransactions;
+}
+
+
 

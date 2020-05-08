@@ -20,7 +20,6 @@ class IncomeManager : public TransactionManager
     vector<Income> incomes;
 
     Income provideIncomeDetails();
-    void prepareIncomesToPresent(vector<Income> &incomesFromTheMonth);
 
 public:
     IncomeManager(int loggedInUserId, string incomeFileName)

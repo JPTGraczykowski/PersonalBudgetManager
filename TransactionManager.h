@@ -23,7 +23,9 @@ class TransactionManager
     bool isYearLeap(int year);
     vector<string> setPeriodOfTime();
     bool isDateAEarlierThanDateB();
-    float countTheBalanceDifference();
+
+protected:
+    float sumOfTheTransactions;
 
 public:
     TransactionManager(int loggedInUserId) : LOGGED_IN_USER_ID(loggedInUserId) {};
@@ -32,5 +34,6 @@ public:
     void showCurrentMonthBalance();
     void showPreviousMonthBalance();
     void showOtherPeriodOfTimeBalance();
+    float getSumOfTheTransaction();
 };
 #endif // TRANSACTIONMANAGER_H

@@ -51,8 +51,8 @@ void IncomeManager::showAllIncomes()
 void IncomeManager::showIncomesFromTheMonth(int month)
 {
     tm dateOfIncome;
-
     vector<Income> incomesFromTheMonth;
+    sumOfTheTransactions = 0;
 
     for(unsigned int i = 0; i<incomes.size(); i++)
     {
@@ -60,23 +60,16 @@ void IncomeManager::showIncomesFromTheMonth(int month)
         if(dateOfIncome.tm_mon == month)
         {
             incomesFromTheMonth.push_back(incomes[i]);
+            sumOfTheTransactions += incomes[i].getAmount();
         }
     }
 
-    prepareIncomesToPresent(incomesFromTheMonth);
+    sort(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
 
     for(unsigned int i = 0; i < incomesFromTheMonth.size(); i++)
     {
         incomesFromTheMonth[i].showIncomeDetails();
     }
 }
-
-
-void IncomeManager::prepareIncomesToPresent(vector<Income> &incomesFromTheMonth)
-{
-    sort(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
-    reverse(incomesFromTheMonth.begin(), incomesFromTheMonth.end());
-}
-
 
 

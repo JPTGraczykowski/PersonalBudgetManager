@@ -52,8 +52,8 @@ void ExpenseManager::showAllExpenses()
 void ExpenseManager::showExpensesFromTheMonth(int month)
 {
     tm dateOfExpense;
-
     vector<Expense> expensesFromTheMonth;
+    sumOfTheTransactions = 0;
 
     for(unsigned int i=0; i<expenses.size(); i++)
     {
@@ -61,23 +61,14 @@ void ExpenseManager::showExpensesFromTheMonth(int month)
         if(dateOfExpense.tm_mon == month)
         {
             expensesFromTheMonth.push_back(expenses[i]);
+            sumOfTheTransactions += expenses[i].getAmount();
         }
     }
 
-    prepareExpensesToPresent(expensesFromTheMonth);
+    sort(expensesFromTheMonth.begin(), expensesFromTheMonth.end());
 
     for(unsigned int i=0; i<expensesFromTheMonth.size(); i++)
     {
         expensesFromTheMonth[i].showExpenseDetails();
     }
 }
-
-void ExpenseManager::prepareExpensesToPresent(vector<Expense> &expensesFromTheMonth)
-{
-    sort(expensesFromTheMonth.begin(), expensesFromTheMonth.end());
-    reverse(expensesFromTheMonth.begin(), expensesFromTheMonth.end());
-}
-
-
-
-

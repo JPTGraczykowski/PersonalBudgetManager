@@ -17,7 +17,6 @@ class ExpenseManager : public TransactionManager
     vector<Expense> expenses;
 
     Expense provideExpenseDetails();
-    void prepareExpensesToPresent(vector<Expense> &expensesFromTheMonth);
 
 public:
     ExpenseManager(int loggedInUserId, string expenseFileName)
