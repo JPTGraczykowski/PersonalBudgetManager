@@ -29,7 +29,7 @@ tm TransactionManager::setDateOfTransaction()
             isDateSet = true;
             break;
         case('2'):
-            date = setOtherDate();
+            date = AuxiliaryMethods::enterTheDate();
             isDateSet = true;
             break;
         default:
@@ -56,31 +56,8 @@ tm TransactionManager::setTodayDate()
 }
 
 
-tm TransactionManager::setOtherDate()
-{
-    tm date;
-    string inputDate = "";
 
-    while(true)
-    {
-        cout<<endl<<endl<<"Enter the date (YYYY-MM-DD): "<<endl;
-        inputDate = AuxiliaryMethods::getLine();
-        date = AuxiliaryMethods::getDateFromString(inputDate);
-
-        if(AuxiliaryMethods::isDateCorrect(date))
-            break;
-        else
-        {
-            cout<<endl<<"Date is incorrect!"<<endl;
-            system("pause");
-        }
-    }
-
-    return date;
-}
-
-
-float TransactionManager::getSumOfTheTransaction()
+float TransactionManager::getSumOfTransactions()
 {
     return sumOfTheTransactions;
 }

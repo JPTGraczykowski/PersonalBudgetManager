@@ -78,10 +78,8 @@ float AuxiliaryMethods::getCurrencyFloat()
             break;
         cout<<"It's not a number."<<endl;
     }
-    cout<<number<<endl;
 
     float numberToReturn = round(number*100)/100;
-    cout<<endl<<numberToReturn<<endl;
 
     return numberToReturn;
 }
@@ -186,7 +184,7 @@ bool AuxiliaryMethods::isDateCorrect(tm date)
     string stringMonth = "";
     string stringDay = "";
 
-    if (date.tm_year < 0)
+    if (date.tm_year < 2000)
         return false;
     else if (date.tm_mon < 0 || date.tm_mon > 12)
         return false;
@@ -231,3 +229,39 @@ bool AuxiliaryMethods::isDateAEarlierThanDateB(tm dateA, tm dateB)
         else
             return false;
 }
+
+
+tm AuxiliaryMethods::enterTheDate()
+{
+
+    tm outputDate;
+    string inputDate = "";
+
+    while(true)
+    {
+        cout<<endl<<endl<<"Enter the date (YYYY-MM-DD): "<<endl;
+        cin.sync();
+        inputDate = getLine();
+        outputDate = getDateFromString(inputDate);
+        if(isDateCorrect(outputDate))
+            break;
+        else
+        {
+            cout<<endl<<"Date is incorrect!"<<endl;
+            system("pause");
+        }
+    }
+    return outputDate;
+}
+
+
+string AuxiliaryMethods::changeFirstLetterToUpper(string inputString)
+{
+    if (!inputString.empty())
+    {
+        transform(inputString.begin(), inputString.end(), inputString.begin(), ::tolower);
+        inputString[0] = toupper(inputString[0]);
+    }
+    return inputString;
+}
+

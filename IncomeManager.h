@@ -28,9 +28,8 @@ public:
          incomes = incomeFile.getIncomesOfLoggedInUserFromFile(getLoggedInUserId());
      };
     void addIncome();
-    void showAllIncomes();
     void showIncomesFromTheMonth(int month);
-    void showIncomesFromTheOtherPeriodOfTime(tm startDate, tm stopDate);
+    void showIncomesFromOtherPeriodOfTime(tm startDate, tm stopDate);
 
 };
 #endif // INCOMEMANAGER_H

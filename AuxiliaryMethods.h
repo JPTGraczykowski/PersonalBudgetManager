@@ -28,6 +28,8 @@ public:
     static int getDaysInMonthNumber(int month, int year);
     static bool isYearLeap(int year);
     static bool isDateAEarlierThanDateB(tm dateA, tm dateB);
+    static tm enterTheDate();
+    static string changeFirstLetterToUpper(string inputString);
 
 
 };

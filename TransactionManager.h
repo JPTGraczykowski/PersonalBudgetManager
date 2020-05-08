@@ -17,7 +17,6 @@ class TransactionManager
     const int LOGGED_IN_USER_ID;
 
     tm setTodayDate();
-    tm setOtherDate();
 
 
 protected:
@@ -27,6 +26,6 @@ public:
     TransactionManager(int loggedInUserId) : LOGGED_IN_USER_ID(loggedInUserId) {};
     int getLoggedInUserId();
     tm setDateOfTransaction();
-    float getSumOfTheTransaction();
+    float getSumOfTransactions();
 };
 #endif // TRANSACTIONMANAGER_H

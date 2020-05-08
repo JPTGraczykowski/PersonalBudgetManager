@@ -89,7 +89,9 @@ void BudgetManager::showThePreviousMonthBalance()
     tm *date = localtime(&now);
     int previousMonth = date->tm_mon;
     if(previousMonth == 0)
-        previousMonth = 12;
+    {
+       previousMonth = 12;
+    }
 
     system("cls");
     cout << "$$$ THE PREVIOUS MONTH BALANCE $$$" << endl << endl;
@@ -108,54 +110,36 @@ void BudgetManager::showThePreviousMonthBalance()
 }
 
 
-void BudgetManager::showTheOtherPeriodOfTimeBalance()
+void BudgetManager::showOtherPeriodOfTimeBalance()
 {
     tm startDate, stopDate;
     string inputStartDate = "";
     string inputStopDate = "";
+
     system("cls");
-    cout<<"Set the period of time."<<endl;
+    cout<<"Set the period of time (start date and stop date)"<<endl;
 
-    while(true)
+    startDate = AuxiliaryMethods::enterTheDate();
+    stopDate = AuxiliaryMethods::enterTheDate();
+
+    if(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, startDate))
     {
-        cout<<endl<<endl<<"Enter the start date (YYYY-MM-DD): "<<endl;
-        inputStartDate = AuxiliaryMethods::getLine();
-        startDate = AuxiliaryMethods::getDateFromString(inputStartDate);
-
-        if(AuxiliaryMethods::isDateCorrect(startDate))
-            break;
-        else
-        {
-            cout<<endl<<"Date is incorrect!"<<endl;
-            system("pause");
-        }
-    }
-
-    while(true)
-    {
-        cout<<endl<<endl<<"Enter the stop date (YYYY-MM-DD): "<<endl;
-        inputStopDate = AuxiliaryMethods::getLine();
-        stopDate = AuxiliaryMethods::getDateFromString(inputStopDate);
-
-        if(AuxiliaryMethods::isDateCorrect(stopDate))
-            break;
-        else
-        {
-            cout<<endl<<"Date is incorrect!"<<endl;
-            system("pause");
-        }
+        cout << endl << "Stop date is earlier than start date." << endl;
+        system("pause");
+        return;
     }
 
     system("cls");
-    cout << "$$$ " << inputStartDate << " : " << inputStopDate << " BALANCE $$$" << endl << endl;
+    cout << "$$$ " << AuxiliaryMethods::convertDateToString(startDate) << " : "
+    << AuxiliaryMethods::convertDateToString(stopDate) << " BALANCE $$$" << endl << endl;
 
     cout << "$$$ INCOMES $$$" << endl << endl;
 
-    incomeManager -> showIncomesFromTheOtherPeriodOfTime(startDate, stopDate);
+    incomeManager -> showIncomesFromOtherPeriodOfTime(startDate, stopDate);
 
     cout << endl << "$$$ EXPENSES $$$" << endl << endl;
 
-    expenseManager -> showExpensesFromTheOtherPeriodOfTime(startDate, stopDate);
+    expenseManager -> showExpensesFromOtherPeriodOfTime(startDate, stopDate);
 
     showTheBalanceSummary();
 
@@ -166,11 +150,11 @@ void BudgetManager::showTheOtherPeriodOfTimeBalance()
 
 void BudgetManager::showTheBalanceSummary()
 {
-    float incomesSum = incomeManager -> getSumOfTheTransaction();
-    float expenseSum = expenseManager -> getSumOfTheTransaction();
+    float incomesSum = incomeManager -> getSumOfTransactions();
+    float expenseSum = expenseManager -> getSumOfTransactions();
     float balance = incomesSum - expenseSum;
 
-    cout << endl << endl << "______________________________" << endl << endl;
+    cout << endl << endl << "---------------------------" << endl << endl;
     cout << "SUM OF INCOMES: " << incomesSum << endl;
     cout << "SUM OF EXPENSES: " << expenseSum << endl;
     cout << "BALANCE: " << balance << endl << endl;
