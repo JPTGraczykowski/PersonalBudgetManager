@@ -25,5 +25,5 @@ void Expense::showExpenseDetails()
     cout<<"DATE: "<<date.tm_year<<"-"<<date.tm_mon<<"-"<<date.tm_mday<<endl;
     cout<<"ITEM: "<<item<<endl;
     cout<<"AMOUNT: "<<amount<<endl;
-    cout<<"_______________"<<endl;
+    cout<<"---------------------------"<<endl;
 }

@@ -38,17 +38,6 @@ Income IncomeManager::provideIncomeDetails()
 }
 
 
-void IncomeManager::showAllIncomes()
-{
-    system("cls");
-    for(unsigned int i=0; i<incomes.size(); i++)
-    {
-        incomes[i].showIncomeDetails();
-    }
-    system("pause");
-}
-
-
 void IncomeManager::showIncomesFromTheMonth(int month)
 {
     tm dateOfIncome;
@@ -74,7 +63,7 @@ void IncomeManager::showIncomesFromTheMonth(int month)
 }
 
 
-void IncomeManager::showIncomesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+void IncomeManager::showIncomesFromOtherPeriodOfTime(tm startDate, tm stopDate)
 {
     tm dateOfIncome;
     vector<Income> incomesFromTheOtherPeriodOfTime;

@@ -6,7 +6,7 @@ void ExpenseManager::addExpense()
     Expense expense;
 
     system("cls");
-    cout<<" $$$ ADD NEW Expense $$$ "<<endl<<endl;
+    cout<<" $$$ ADD NEW EXPENSE $$$ "<<endl<<endl;
 
     expense = provideExpenseDetails();
     expenses.push_back(expense);
@@ -38,17 +38,6 @@ Expense ExpenseManager::provideExpenseDetails()
 }
 
 
-void ExpenseManager::showAllExpenses()
-{
-    system("cls");
-    for(int i=0; i<expenses.size(); i++)
-    {
-        expenses[i].showExpenseDetails();
-    }
-    system("pause");
-}
-
-
 void ExpenseManager::showExpensesFromTheMonth(int month)
 {
     tm dateOfExpense;
@@ -74,7 +63,7 @@ void ExpenseManager::showExpensesFromTheMonth(int month)
 }
 
 
-void ExpenseManager::showExpensesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+void ExpenseManager::showExpensesFromOtherPeriodOfTime(tm startDate, tm stopDate)
 {
     tm dateOfExpense;
     vector<Expense> expensesFromTheOtherPeriodOfTime;

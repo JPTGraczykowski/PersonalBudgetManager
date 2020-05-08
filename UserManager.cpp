@@ -21,7 +21,7 @@ void UserManager::registerUser()
     users.push_back(user);
     userFile.addUserToFile(user);
 
-    cout << endl << "User is registered" << endl << endl;
+    cout << endl << "User is registered." << endl << endl;
     system("pause");
 }
 
@@ -48,10 +48,12 @@ User UserManager::provideUserDetails()
 
     cout << "Enter your name: ";
     cin>>name;
+    name = AuxiliaryMethods::changeFirstLetterToUpper(name);
     user.setName(name);
 
     cout << "Enter your surname: ";
     cin>>surname;
+    surname = AuxiliaryMethods::changeFirstLetterToUpper(surname);
     user.setSurname(surname);
 
     return user;
@@ -73,7 +75,7 @@ bool UserManager::loginExists(string login)
     {
         if(users[i].getLogin() == login)
         {
-            cout<<endl<<"This login already exists" << endl;
+            cout<<endl<<"This login already exists." << endl;
             return true;
         }
     }
@@ -108,7 +110,7 @@ void UserManager::logInUser()
 
                 }
             }
-            cout << "You have made mistake 3 times." << endl;
+            cout << "You have made a mistake 3 times." << endl;
             system("pause");
             return;
         }
@@ -152,15 +154,4 @@ bool UserManager::isUserLoggedIn()
         return true;
     else
         return false;
-}
-
-
-void UserManager::listAllUsers()
-{
-    for(unsigned int i = 0; i<users.size(); i++)
-    {
-        cout<<endl<<"ID: "<<users[i].getId()<<endl;
-        cout<<endl<<"LOGIN: "<<users[i].getLogin()<<endl;
-    }
-    system("pause");
 }

@@ -25,7 +25,7 @@ public:
     void setItem(string newItem);
     void setAmount(float newAmount);
 
-    bool operator < (const Transaction &x) const
+    bool operator < (const Transaction &x) const //definition of operator < which indicates which transaction is older
     {
         if(date.tm_year < x.date.tm_year)
             return true;

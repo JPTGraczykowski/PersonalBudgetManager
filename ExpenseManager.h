@@ -27,7 +27,7 @@ public:
     void addExpense();
     void showAllExpenses();
     void showExpensesFromTheMonth(int month);
-    void showExpensesFromTheOtherPeriodOfTime(tm startDate,tm stopDate);
+    void showExpensesFromOtherPeriodOfTime(tm startDate,tm stopDate);
 };
 
 #endif // EXPENSEMANAGER_H

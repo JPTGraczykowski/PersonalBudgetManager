@@ -34,9 +34,6 @@ public:
     void registerUser();
     void changeLoggedInUserPassword();
     bool isUserLoggedIn();
-    void listAllUsers();
-
-
 
 };
 #endif // USERMANAGER_H
