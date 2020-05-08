@@ -18,11 +18,7 @@ class TransactionManager
 
     tm setTodayDate();
     tm setOtherDate();
-    bool isDateCorect(tm date);
-    int getDaysInMonthNumber(int month, int year);
-    bool isYearLeap(int year);
-    vector<string> setPeriodOfTime();
-    bool isDateAEarlierThanDateB();
+
 
 protected:
     float sumOfTheTransactions;
@@ -31,9 +27,6 @@ public:
     TransactionManager(int loggedInUserId) : LOGGED_IN_USER_ID(loggedInUserId) {};
     int getLoggedInUserId();
     tm setDateOfTransaction();
-    void showCurrentMonthBalance();
-    void showPreviousMonthBalance();
-    void showOtherPeriodOfTimeBalance();
     float getSumOfTheTransaction();
 };
 #endif // TRANSACTIONMANAGER_H

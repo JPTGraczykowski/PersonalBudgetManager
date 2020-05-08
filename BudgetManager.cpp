@@ -108,6 +108,61 @@ void BudgetManager::showThePreviousMonthBalance()
 }
 
 
+void BudgetManager::showTheOtherPeriodOfTimeBalance()
+{
+    tm startDate, stopDate;
+    string inputStartDate = "";
+    string inputStopDate = "";
+    system("cls");
+    cout<<"Set the period of time."<<endl;
+
+    while(true)
+    {
+        cout<<endl<<endl<<"Enter the start date (YYYY-MM-DD): "<<endl;
+        inputStartDate = AuxiliaryMethods::getLine();
+        startDate = AuxiliaryMethods::getDateFromString(inputStartDate);
+
+        if(AuxiliaryMethods::isDateCorrect(startDate))
+            break;
+        else
+        {
+            cout<<endl<<"Date is incorrect!"<<endl;
+            system("pause");
+        }
+    }
+
+    while(true)
+    {
+        cout<<endl<<endl<<"Enter the stop date (YYYY-MM-DD): "<<endl;
+        inputStopDate = AuxiliaryMethods::getLine();
+        stopDate = AuxiliaryMethods::getDateFromString(inputStopDate);
+
+        if(AuxiliaryMethods::isDateCorrect(stopDate))
+            break;
+        else
+        {
+            cout<<endl<<"Date is incorrect!"<<endl;
+            system("pause");
+        }
+    }
+
+    system("cls");
+    cout << "$$$ " << inputStartDate << " : " << inputStopDate << " BALANCE $$$" << endl << endl;
+
+    cout << "$$$ INCOMES $$$" << endl << endl;
+
+    incomeManager -> showIncomesFromTheOtherPeriodOfTime(startDate, stopDate);
+
+    cout << endl << "$$$ EXPENSES $$$" << endl << endl;
+
+    expenseManager -> showExpensesFromTheOtherPeriodOfTime(startDate, stopDate);
+
+    showTheBalanceSummary();
+
+    system("pause");
+}
+
+
 
 void BudgetManager::showTheBalanceSummary()
 {
@@ -151,6 +206,7 @@ char BudgetManager::chooseFromUserMenu()
     cout << "2. Add expense" << endl;
     cout << "3. Show the current month balance" << endl;
     cout << "4. Show the previous month balance" << endl;
+    cout << "5. Show the other period of time balance" << endl;
     cout << "6. Change password" << endl;
     cout << "9. Log out" << endl;
     cout << "---------------------------" << endl;

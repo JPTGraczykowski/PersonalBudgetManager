@@ -47,6 +47,7 @@ public:
 
     void showTheCurrentMonthBalance();
     void showThePreviousMonthBalance();
+    void showTheOtherPeriodOfTimeBalance();
 
     char chooseFromMainMenu();
     char chooseFromUserMenu();

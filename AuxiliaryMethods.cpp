@@ -163,4 +163,54 @@ string AuxiliaryMethods::convertDateToString(tm inputDate)
 }
 
 
+bool AuxiliaryMethods::isDateCorrect(tm date)
+{
+    string stringYear = "";
+    string stringMonth = "";
+    string stringDay = "";
 
+    if (date.tm_year < 0)
+        return false;
+    else if (date.tm_mon < 0 || date.tm_mon > 12)
+        return false;
+    else if (date.tm_mday < 0 || date.tm_mday > getDaysInMonthNumber(date.tm_mon, date.tm_year))
+        return false;
+    else
+        return true;
+}
+
+
+bool AuxiliaryMethods::isYearLeap(int year)
+{
+    if((year%4 == 0 && year%100 != 0) || year%400 == 0)
+        return true;
+}
+
+
+int AuxiliaryMethods::getDaysInMonthNumber(int month, int year)
+{
+    if (month == 4 || month == 6 || month == 9 || month == 11)
+        return 30;
+    else if(month == 2)
+    {
+        if(isYearLeap(year))
+            return 29;
+        else
+            return 28;
+    }
+    else
+        return 31;
+}
+
+
+bool AuxiliaryMethods::isDateAEarlierThanDateB(tm dateA, tm dateB)
+{
+    if(dateA.tm_year < dateB.tm_year)
+            return true;
+        else if(dateA.tm_mon < dateB.tm_mon)
+            return true;
+        else if(dateA.tm_mday < dateB.tm_mday)
+            return true;
+        else
+            return false;
+}

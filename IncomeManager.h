@@ -26,11 +26,11 @@ public:
      : TransactionManager(loggedInUserId), incomeFile(incomeFileName)
      {
          incomes = incomeFile.getIncomesOfLoggedInUserFromFile(getLoggedInUserId());
-         showAllIncomes();
      };
     void addIncome();
     void showAllIncomes();
     void showIncomesFromTheMonth(int month);
+    void showIncomesFromTheOtherPeriodOfTime(tm startDate, tm stopDate);
 
 };
 #endif // INCOMEMANAGER_H

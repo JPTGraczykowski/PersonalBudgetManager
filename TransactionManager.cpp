@@ -59,66 +59,24 @@ tm TransactionManager::setTodayDate()
 tm TransactionManager::setOtherDate()
 {
     tm date;
-    int year, month, day;
     string inputDate = "";
 
     while(true)
     {
-        system("cls");
-        cout<<"Enter the date of the income (YYYY-MM-DD): "<<endl;
+        cout<<endl<<endl<<"Enter the date (YYYY-MM-DD): "<<endl;
         inputDate = AuxiliaryMethods::getLine();
         date = AuxiliaryMethods::getDateFromString(inputDate);
 
-        if(isDateCorect(date))
+        if(AuxiliaryMethods::isDateCorrect(date))
             break;
         else
         {
-            cout<<endl<<"Date is incorect!"<<endl;
+            cout<<endl<<"Date is incorrect!"<<endl;
             system("pause");
         }
     }
 
     return date;
-}
-
-
-bool TransactionManager::isDateCorect(tm date)
-{
-    string stringYear = "";
-    string stringMonth = "";
-    string stringDay = "";
-
-    if (date.tm_year < 0)
-        return false;
-    else if (date.tm_mon < 0 || date.tm_mon > 12)
-        return false;
-    else if (date.tm_mday < 0 || date.tm_mday > getDaysInMonthNumber(date.tm_mon, date.tm_year))
-        return false;
-    else
-        return true;
-}
-
-
-bool TransactionManager::isYearLeap(int year)
-{
-    if((year%4 == 0 && year%100 != 0) || year%400 == 0)
-        return true;
-}
-
-
-int TransactionManager::getDaysInMonthNumber(int month, int year)
-{
-    if (month == 4 || month == 6 || month == 9 || month == 11)
-        return 30;
-    else if(month == 2)
-    {
-        if(isYearLeap(year))
-            return 29;
-        else
-            return 28;
-    }
-    else
-        return 31;
 }
 
 

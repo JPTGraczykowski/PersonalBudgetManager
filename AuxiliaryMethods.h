@@ -23,6 +23,11 @@ public:
     static string convertFloatToString(float floatToString);
     static tm getDateFromString(string inputDate);
     static string convertDateToString(tm inputDate);
+    static bool isDateCorrect(tm date);
+    static int getDaysInMonthNumber(int month, int year);
+    static bool isYearLeap(int year);
+    static bool isDateAEarlierThanDateB(tm dateA, tm dateB);
+
 
 };
 

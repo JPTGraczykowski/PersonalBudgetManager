@@ -23,11 +23,11 @@ public:
     : TransactionManager(loggedInUserId), expenseFile(expenseFileName)
      {
          expenses = expenseFile.getExpensesOfLoggedInUserFromFile(getLoggedInUserId());
-         showAllExpenses();
      };
     void addExpense();
     void showAllExpenses();
     void showExpensesFromTheMonth(int month);
+    void showExpensesFromTheOtherPeriodOfTime(tm startDate,tm stopDate);
 };
 
 #endif // EXPENSEMANAGER_H

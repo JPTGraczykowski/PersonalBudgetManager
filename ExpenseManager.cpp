@@ -72,3 +72,29 @@ void ExpenseManager::showExpensesFromTheMonth(int month)
         expensesFromTheMonth[i].showExpenseDetails();
     }
 }
+
+
+void ExpenseManager::showExpensesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+{
+    tm dateOfExpense;
+    vector<Expense> expensesFromTheOtherPeriodOfTime;
+    sumOfTheTransactions = 0;
+
+    for (unsigned int i = 0; i<expenses.size(); i++)
+    {
+        dateOfExpense = expenses[i].getDate();
+        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfExpense, startDate))
+           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfExpense)))
+           {
+               expensesFromTheOtherPeriodOfTime.push_back(expenses[i]);
+               sumOfTheTransactions += expenses[i].getAmount();
+           }
+    }
+
+    sort(expensesFromTheOtherPeriodOfTime.begin(), expensesFromTheOtherPeriodOfTime.end());
+
+    for(unsigned int i = 0; i<expensesFromTheOtherPeriodOfTime.size(); i++)
+    {
+        expensesFromTheOtherPeriodOfTime[i].showExpenseDetails();
+    }
+}

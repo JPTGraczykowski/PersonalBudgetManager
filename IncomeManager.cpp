@@ -73,3 +73,29 @@ void IncomeManager::showIncomesFromTheMonth(int month)
 }
 
 
+void IncomeManager::showIncomesFromTheOtherPeriodOfTime(tm startDate, tm stopDate)
+{
+    tm dateOfIncome;
+    vector<Income> incomesFromTheOtherPeriodOfTime;
+    sumOfTheTransactions = 0;
+
+    for (unsigned int i = 0; i<incomes.size(); i++)
+    {
+        dateOfIncome = incomes[i].getDate();
+        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfIncome, startDate))
+           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfIncome)))
+           {
+               incomesFromTheOtherPeriodOfTime.push_back(incomes[i]);
+               sumOfTheTransactions += incomes[i].getAmount();
+           }
+    }
+
+    sort(incomesFromTheOtherPeriodOfTime.begin(), incomesFromTheOtherPeriodOfTime.end());
+
+    for(unsigned int i = 0; i<incomesFromTheOtherPeriodOfTime.size(); i++)
+    {
+        incomesFromTheOtherPeriodOfTime[i].showIncomeDetails();
+    }
+}
+
+

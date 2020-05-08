@@ -52,6 +52,9 @@ int main()
             case '4':
                 budgetManager.showThePreviousMonthBalance();
                 break;
+            case '5':
+                budgetManager.showTheOtherPeriodOfTimeBalance();
+                break;
             case '6':
                 budgetManager.changeLoggedInUserPassword();
                 break;
