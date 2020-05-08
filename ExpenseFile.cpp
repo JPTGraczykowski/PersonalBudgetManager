@@ -51,7 +51,7 @@ vector<Expense> ExpenseFile::getExpensesOfLoggedInUserFromFile(int loggedInUserI
     else
     {
         system("cls");
-        cout<<"XML file error!";
+        cout<<"File ''expenses.xml'' doesn't exist."<<endl;
         system("pause");
     }
 
@@ -81,23 +81,21 @@ void ExpenseFile::addExpenseToFile(Expense expense)
     {
         file.FindElem(); //go to EXPENSES
         file.IntoElem(); //go to EXPENSES
-
-        file.AddElem("EXPENSE");
-        file.IntoElem();
-
-        file.AddElem("EXPENSE_ID", expense.getExpenseId());
-        file.AddElem("USER_ID", expense.getUserId());
-        file.AddElem("DATE", AuxiliaryMethods::convertDateToString(expense.getDate()));
-        file.AddElem("ITEM", expense.getItem());
-        file.AddElem("AMOUNT", expense.getAmount());
-
-        file.Save(getFileName().c_str());
     }
     else
     {
-        system("cls");
-        cout<<"XML file error!";
-        system("pause");
+        file.AddElem("EXPENSES"); //create EXPENSES
+        file.IntoElem(); //go to EXPENSES
     }
 
+    file.AddElem("EXPENSE");
+    file.IntoElem();
+
+    file.AddElem("EXPENSE_ID", expense.getExpenseId());
+    file.AddElem("USER_ID", expense.getUserId());
+    file.AddElem("DATE", AuxiliaryMethods::convertDateToString(expense.getDate()));
+    file.AddElem("ITEM", expense.getItem());
+    file.AddElem("AMOUNT", expense.getAmount());
+
+    file.Save(getFileName().c_str());
 }
