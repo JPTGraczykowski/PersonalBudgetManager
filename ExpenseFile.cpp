@@ -95,7 +95,7 @@ void ExpenseFile::addExpenseToFile(Expense expense)
     file.AddElem("USER_ID", expense.getUserId());
     file.AddElem("DATE", AuxiliaryMethods::convertDateToString(expense.getDate()));
     file.AddElem("ITEM", expense.getItem());
-    file.AddElem("AMOUNT", expense.getAmount());
+    file.AddElem("AMOUNT", AuxiliaryMethods::convertFloatToString(expense.getAmount()));
 
     file.Save(getFileName().c_str());
 }

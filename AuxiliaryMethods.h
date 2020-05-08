@@ -17,6 +17,7 @@ public:
     static string getLine();
     static int getInt();
     static float getCurrencyFloat();
+    static string changeComaToDot(string number);
     static int convertStringToInt(string stringToChange);
     static float convertStringToFloat(string stringToChange);
     static string convertIntToString(int intToChange);

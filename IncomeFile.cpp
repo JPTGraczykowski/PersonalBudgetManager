@@ -95,7 +95,7 @@ void IncomeFile::addIncomeToFile(Income income)
     file.AddElem("USER_ID", income.getUserId());
     file.AddElem("DATE", AuxiliaryMethods::convertDateToString(income.getDate()));
     file.AddElem("ITEM", income.getItem());
-    file.AddElem("AMOUNT", income.getAmount());
+    file.AddElem("AMOUNT", AuxiliaryMethods::convertFloatToString(income.getAmount()));
 
     file.Save(getFileName().c_str());
 }

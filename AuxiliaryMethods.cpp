@@ -50,6 +50,17 @@ int AuxiliaryMethods::getInt()
 }
 
 
+string AuxiliaryMethods::changeComaToDot(string number)
+{
+    for (unsigned int i =0; i<number.size(); i++)
+    {
+        if(number[i] == ',')
+            number[i] = '.';
+    }
+    return number;
+}
+
+
 float AuxiliaryMethods::getCurrencyFloat()
 {
     string input = "";
@@ -60,13 +71,19 @@ float AuxiliaryMethods::getCurrencyFloat()
         cin.sync();
         getline(cin, input);
 
+        input = changeComaToDot(input);
+
         stringstream myStream(input);
         if (myStream >> number)
             break;
         cout<<"It's not a number."<<endl;
     }
+    cout<<number<<endl;
 
-    return round(number*100)/100;
+    float numberToReturn = round(number*100)/100;
+    cout<<endl<<numberToReturn<<endl;
+
+    return numberToReturn;
 }
 
 
