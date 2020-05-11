@@ -11,7 +11,7 @@ Expense ExpenseFile::getExpenseDetails(CMarkup &file)
     file.FindElem("USER_ID");
     expense.setUserId(AuxiliaryMethods::convertStringToInt(file.GetData()));
     file.FindElem("DATE");
-    expense.setDate(AuxiliaryMethods::getDateFromString(file.GetData() + "-"));
+    expense.setDate(DateOperations::getDateFromString(file.GetData() + "-"));
     file.FindElem("ITEM");
     expense.setItem(file.GetData());
     file.FindElem("AMOUNT");
@@ -93,7 +93,7 @@ void ExpenseFile::addExpenseToFile(Expense expense)
 
     file.AddElem("EXPENSE_ID", expense.getExpenseId());
     file.AddElem("USER_ID", expense.getUserId());
-    file.AddElem("DATE", AuxiliaryMethods::convertDateToString(expense.getDate()));
+    file.AddElem("DATE", DateOperations::convertDateToString(expense.getDate()));
     file.AddElem("ITEM", expense.getItem());
     file.AddElem("AMOUNT", AuxiliaryMethods::convertFloatToString(expense.getAmount()));
 
