@@ -3,6 +3,7 @@
 
 #include "DataFile.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 #include "Markup.h"
 #include "Expense.h"
 

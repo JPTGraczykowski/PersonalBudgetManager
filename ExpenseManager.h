@@ -1,7 +1,6 @@
 #ifndef EXPENSEMANAGER_H
 #define EXPENSEMANAGER_H
 
-#include "AuxiliaryMethods.h"
 #include "TransactionManager.h"
 #include "Expense.h"
 #include "ExpenseFile.h"

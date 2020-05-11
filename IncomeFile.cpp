@@ -11,7 +11,7 @@ Income IncomeFile::getIncomeDetails(CMarkup &file)
     file.FindElem("USER_ID");
     income.setUserId(AuxiliaryMethods::convertStringToInt(file.GetData()));
     file.FindElem("DATE");
-    income.setDate(AuxiliaryMethods::getDateFromString(file.GetData() + "-"));
+    income.setDate(DateOperations::getDateFromString(file.GetData() + "-"));
     file.FindElem("ITEM");
     income.setItem(file.GetData());
     file.FindElem("AMOUNT");
@@ -93,7 +93,7 @@ void IncomeFile::addIncomeToFile(Income income)
 
     file.AddElem("INCOME_ID", income.getIncomeId());
     file.AddElem("USER_ID", income.getUserId());
-    file.AddElem("DATE", AuxiliaryMethods::convertDateToString(income.getDate()));
+    file.AddElem("DATE", DateOperations::convertDateToString(income.getDate()));
     file.AddElem("ITEM", income.getItem());
     file.AddElem("AMOUNT", AuxiliaryMethods::convertFloatToString(income.getAmount()));
 

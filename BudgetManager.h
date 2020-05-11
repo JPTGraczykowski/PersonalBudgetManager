@@ -5,6 +5,7 @@
 #include "IncomeManager.h"
 #include "ExpenseManager.h"
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 
 #include<iostream>
 

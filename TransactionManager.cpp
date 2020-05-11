@@ -25,11 +25,11 @@ tm TransactionManager::setDateOfTransaction()
         switch(choice)
         {
         case('1'):
-            date = setTodayDate();
+            date = DateOperations::getTodayDate();
             isDateSet = true;
             break;
         case('2'):
-            date = AuxiliaryMethods::enterTheDate();
+            date = DateOperations::enterTheDate();
             isDateSet = true;
             break;
         default:
@@ -42,18 +42,6 @@ tm TransactionManager::setDateOfTransaction()
 }
 
 
-tm TransactionManager::setTodayDate()
-{
-    time_t now = time(0);
-
-    tm *indicateDate = localtime(&now);
-    tm date;
-    date.tm_year = 1900 + indicateDate->tm_year;
-    date.tm_mon = 1 + indicateDate->tm_mon;
-    date.tm_mday = indicateDate->tm_mday;
-
-    return date;
-}
 
 
 

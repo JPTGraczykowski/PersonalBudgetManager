@@ -9,14 +9,13 @@
 
 
 #include "AuxiliaryMethods.h"
+#include "DateOperations.h"
 
 using namespace std;
 
 class TransactionManager
 {
     const int LOGGED_IN_USER_ID;
-
-    tm setTodayDate();
 
 
 protected:

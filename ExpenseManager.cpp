@@ -72,8 +72,8 @@ void ExpenseManager::showExpensesFromOtherPeriodOfTime(tm startDate, tm stopDate
     for (unsigned int i = 0; i<expenses.size(); i++)
     {
         dateOfExpense = expenses[i].getDate();
-        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfExpense, startDate))
-           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfExpense)))
+        if(!(DateOperations::isDateAEarlierThanDateB(dateOfExpense, startDate))
+           && !(DateOperations::isDateAEarlierThanDateB(stopDate, dateOfExpense)))
            {
                expensesFromTheOtherPeriodOfTime.push_back(expenses[i]);
                sumOfTheTransactions += expenses[i].getAmount();

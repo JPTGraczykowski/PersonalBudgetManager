@@ -72,8 +72,8 @@ void IncomeManager::showIncomesFromOtherPeriodOfTime(tm startDate, tm stopDate)
     for (unsigned int i = 0; i<incomes.size(); i++)
     {
         dateOfIncome = incomes[i].getDate();
-        if(!(AuxiliaryMethods::isDateAEarlierThanDateB(dateOfIncome, startDate))
-           && !(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, dateOfIncome)))
+        if(!(DateOperations::isDateAEarlierThanDateB(dateOfIncome, startDate))
+           && !(DateOperations::isDateAEarlierThanDateB(stopDate, dateOfIncome)))
            {
                incomesFromTheOtherPeriodOfTime.push_back(incomes[i]);
                sumOfTheTransactions += incomes[i].getAmount();

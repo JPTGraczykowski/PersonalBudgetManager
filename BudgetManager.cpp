@@ -119,10 +119,10 @@ void BudgetManager::showOtherPeriodOfTimeBalance()
     system("cls");
     cout<<"Set the period of time (start date and stop date)"<<endl;
 
-    startDate = AuxiliaryMethods::enterTheDate();
-    stopDate = AuxiliaryMethods::enterTheDate();
+    startDate = DateOperations::enterTheDate();
+    stopDate = DateOperations::enterTheDate();
 
-    if(AuxiliaryMethods::isDateAEarlierThanDateB(stopDate, startDate))
+    if(DateOperations::isDateAEarlierThanDateB(stopDate, startDate))
     {
         cout << endl << "Stop date is earlier than start date." << endl;
         system("pause");
@@ -130,8 +130,8 @@ void BudgetManager::showOtherPeriodOfTimeBalance()
     }
 
     system("cls");
-    cout << "$$$ " << AuxiliaryMethods::convertDateToString(startDate) << " : "
-    << AuxiliaryMethods::convertDateToString(stopDate) << " BALANCE $$$" << endl << endl;
+    cout << "$$$ " << DateOperations::convertDateToString(startDate) << " : "
+    << DateOperations::convertDateToString(stopDate) << " BALANCE $$$" << endl << endl;
 
     cout << "$$$ INCOMES $$$" << endl << endl;
 
